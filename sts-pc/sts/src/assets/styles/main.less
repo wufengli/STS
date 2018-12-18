@@ -1,0 +1,185 @@
+.elButton{
+  line-height: 1.2rem;
+  height:1.2rem;
+  font-size: 0.6rem;
+  padding: 0rem 0.5rem;
+  background-color: #105faa;
+  border-color: #105faa;
+  color:#fff;
+}
+.elInputInner{
+  line-height: 1.3rem;
+  height:1.3rem;
+  font-size: 0.6rem;
+}
+// 竞价
+.result,
+.manage,
+.bidding {
+  margin-top: 3.15rem;
+  .title {
+    font-size: .7rem;
+    color: #333;
+    padding: .35rem .5rem;
+    padding-bottom: 1rem;
+  }
+  .wrap {
+    padding: .5rem .75rem;
+    padding-top: 0;
+  }
+  // tab
+  /deep/.el-tabs__header {
+    margin-bottom: .5rem;
+  }
+  /deep/.el-tabs__nav {
+    width: 100%;
+    display: flex;
+    .el-tabs__active-bar {
+      background-color: #105faa;
+    }
+    .el-tabs__item {
+      flex: 1;
+      text-align: center;
+      font-size: .6rem;
+      &.is-active {
+        color: #105faa;
+      }
+    }
+  }
+  /deep/.el-tabs__content {
+    .el-table {
+      .el-table__header-wrapper th {
+        height: 1.6rem;
+        line-height: 1.6rem;
+        padding: .2rem .5rem;
+        text-align: center;
+        color: #666;
+        background-color: #ebeef5;
+        border-bottom: none;
+        font-size: .6rem;
+      }
+      .el-table__body tr:hover {
+        td {
+          background-color: #8ffb7a;
+        }
+      }
+      .el-table__body-wrapper tr {
+        cursor: pointer;
+        &.current-row {
+          background-color: #8ffb7a;
+          td {
+            background-color: #8ffb7a;
+          }
+        }
+        td {
+          padding: .2rem .5rem;
+          text-align: center;
+          font-size: .6rem;
+          .cell {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+  }
+}
+// detail
+.detail-bar {
+  .detail-title {
+    display: flex;
+    .detail-leader {
+      flex: 1;
+      font-size: .6rem;
+      color: #666;
+    }
+    .detail-total {
+      font-size: .6rem;
+      color: #666;
+      padding: 0 .5rem .5rem .5rem;
+      span {
+        padding: 0 .5rem;
+        color: #e61f1f;
+        &.detail-num {
+          padding-right: 2rem;
+        }
+      }
+    }
+  }
+}
+// search 
+.search-bar {
+  font-size: .6rem;
+  .search-btn {
+    display: flex;
+    background-color: #ebeef5;
+    padding-left: .75rem;
+    .btn-box {
+      margin-right: 1rem;
+      color: #ccc;
+      /deep/.el-button--text {
+        color: #999;
+      }
+    }
+  }
+  .search-box {
+    margin: .25rem 0;
+    padding: 0 0.75rem;
+    padding-bottom: 1rem;
+    font-size: .6rem;
+    border-top: .05rem solid #EBEEF5;
+    border-bottom: .05rem solid #EBEEF5;
+    .item {
+      display: flex;
+      .items {
+        color: #666;
+        width: 22%;
+        padding-right: 1rem;
+        padding-top: 1rem;
+        display: flex;
+        &.data {
+          width: 34%;
+        }
+        .label {
+          width: 4.5rem;
+          display: inline-block;
+          line-height: 1.1rem;
+        }
+        .el-input {
+          width: auto;
+          /deep/.el-input__inner {
+            height: 1.1rem;
+            padding-right: 1.5rem;
+            line-height: 1.1rem;
+            font-size: .6rem;
+          }
+        }
+        .el-select {
+          font-size: .6rem;
+          /deep/.el-input__inner {
+            height: 1.1rem;
+            line-height: 1.1rem;
+            font-size: .6rem;
+          }
+          /deep/.el-input__icon {
+            line-height: 1.1rem;
+          }
+        }
+        .el-date-editor {
+          .el-date-editor.el-input__inner {
+            height: 1.1rem;
+            line-height: 1.1rem;
+            font-size: .6rem;
+          }
+          /deep/.el-input__icon {
+            line-height: 1.1rem;
+          }
+          /deep/.el-icon-circle-close {
+            line-height: 1.1rem;
+          }
+        }
+      }
+    }
+  }
+}
