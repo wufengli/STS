@@ -1,0 +1,5 @@
+<!--pages/bidding/bidding.wxml-->
+  <headerbar tips="竞价任务"/>
+  <view style='margin-top:72px'>
+    <icon class="iconfont icon-search"></icon>
+  </view>

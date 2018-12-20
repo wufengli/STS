@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "headerbar": "/components/headerbar/headerbar"
+  },
+  "window": {
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": "true"
+  }
+}

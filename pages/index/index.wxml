@@ -1,13 +1,14 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <headerbar tips="九州通物流"/>
+  <view class="content">
+    <image class="index" mode="widthFix" src="/images/index1.png"></image>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="leader">
+    <image class="index" mode="widthFix" src="/images/index2.png"></image>
+    <view class='bidding' bindtap='handleToBidding'></view>
+  </view>
+  <view class="bottom">
+    <image class="index" mode="widthFix" src="/images/index3.png"></image>
   </view>
 </view>

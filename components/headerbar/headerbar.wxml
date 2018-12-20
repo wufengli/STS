@@ -1,0 +1,5 @@
+<!--components/headerbar/headerbar.wxml-->
+<view class='title'>
+  <text class='text'>{{tips}}</text>
+</view>
+
