@@ -1,5 +1,23 @@
 <!--pages/bidding/bidding.wxml-->
-  <headerbar tips="竞价任务"/>
-  <view style='margin-top:72px'>
-    <icon class="iconfont icon-search"></icon>
+<headerbar tips="竞价任务"/>
+<view class="movie-container">
+  <!-- 导航栏 -->
+  <view class="navbar">
+    <block wx:for="{{navbarTitle}}" wx:key="index">
+      <view class="navbar-item {{navbarActiveIndex === index ? 'navbar-item-active' : ''}}" data-navbar-index="{{index}}" catchtap="onNavBarTap">
+        <icon class="iconfont icon-remind"></icon>
+        <text>{{item}}</text>
+      </view>
+    </block>
   </view>
+  <view class="movie-content-wrapper">
+    <swiper current="{{navbarActiveIndex}}" bindanimationfinish="onBindAnimationFinish">
+      <swiper-item wx:for="{{navbarTitle}}" wx:key="index">
+        <scroll-view scroll-y="{{true}}">
+          {{item}}
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
+<view>111</view>
