@@ -1,0 +1,52 @@
+<view class="page">
+  <!-- 内容 -->
+  <view class="page__bd">
+    <!-- tab -->
+    <view class="weui-tab content">
+      <view class="list">
+        <view class="weui-form-preview" wx:for="{{detaillist}}" wx:key="index">
+          <view class="weui-form-preview__hd">
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">任务单号：{{id}}</view>
+              <view class="weui-form-preview__value">{{index+1}}</view>
+            </view>
+          </view>
+          <view class="weui-form-preview__bd">
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">商品名称：</view>
+              <view class="weui-form-preview__value">{{item.goodsType}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">起始地：</view>
+              <view class="weui-form-preview__value">{{item.startArea}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">目的地：</view>
+              <view class="weui-form-preview__value">{{item.endArea}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">类型：</view>
+              <view class="weui-form-preview__value">{{item.transportType}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">时效：</view>
+              <view class="weui-form-preview__value">{{item.receivingTime}}h</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">详情：</view>
+              <view class="weui-form-preview__value">
+                <text class='detail'>件数：{{item.goodsCount}}</text>|
+                <text class='detail'>重量：{{item.weight}}kg</text>|
+                <text class='detail final'> 体积：{{item.volume}}m³</text>
+              </view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">备注：</view>
+              <view class="weui-form-preview__value">{{item.remark}}h</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

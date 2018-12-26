@@ -1,0 +1,30 @@
+<view class="container">
+  <view class='imgBox'>
+    <image mode='widthFix' src='../../images/address.jpg'></image>
+  </view>
+  <view class="form">
+    <view class="col-l">
+      <view class="label">姓名</view>
+      <input type="text" class="detail" bindinput="getName" value="{{name}}"></input>
+    </view>
+    <view class="col-l">
+      <view class="label">联系方式</view>
+      <input type="text" class="detail" bindinput="getPhone" value="{{phone}}"></input>
+    </view>
+    <view class="col-l">
+      <view class="label">所在地区</view>
+      <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
+        <view class="picker">
+          {{region[0]}}，{{region[1]}}，{{region[2]}}
+        </view>
+      </picker>
+    </view>
+    <view class="col-l">
+      <view class="label">详细地址</view>
+      <input type="text" class="detail" bindinput="getAddressDetail" value="{{addressDetail}}"></input>
+    </view>
+  </view>
+  <view class="confirm">
+    <button bindtap="saveAddress">确定</button>
+  </view>
+</view>

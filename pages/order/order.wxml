@@ -1,0 +1,101 @@
+<view class="content">
+  <view class="container" wx:if="{{show}}">
+    <view class="order">
+      <form class="orderForm">
+        <view class="address" bindtap="addAddress" id="send">
+          <view class="label">寄</view>
+          <view class="text" wx:if="{{flagOne}}">请输入联系方式</view>
+          <view class="text" wx:else>
+            <view>
+              <text class="name">{{Order.consignor}}</text>
+              <text class="phone">{{Order.phoneNumConsignor}}</text>
+            </view>
+            <view class="Area">{{Order.startArea}}{{Order.startAreaMx}}</view>
+          </view>
+          <view class="iconfont icon-right"></view>
+        </view>
+        <view class="address" bindtap="addAddress" id="get">
+          <view class="label getlabel">收</view>
+          <view class="text" wx:if="{{flagTwo}}">请输入联系方式</view>
+          <view class="text" wx:else>
+            <view>
+              <text class="name">{{Order.consignee}}</text>
+              <text class="phone">{{Order.phoneNumConsignee}}</text>
+            </view>
+            <view class="Area">{{Order.endArea}}{{Order.endAreaMx}}</view>
+          </view>
+          <view class="iconfont icon-right"></view>
+        </view>
+        <view class="bigBox sendInfo">
+          <view class="col-tab">
+            <view class="label">商品类型:</view>
+            <picker bindchange="bindPickerChange" value="{{indexOne}}" range="{{goodsType}}" range-key="name" class="picked">
+              <view class="picker">
+                {{goodsType[indexOne].name}}
+                <icon class="iconfont icon-right"></icon>
+              </view>
+            </picker>
+          </view>
+          <view class="col-tab">
+            <view class="label">重量：</view>
+            <input type="number" placeholder-style='text-align:right' bindinput='getWeight'></input>
+          </view>
+          <view class="col-tab">
+            <view class="label">体积：</view>
+            <input type="number" placeholder-style='text-align:right' bindinput='getVolume'></input>
+          </view>
+          <view class="col-tab">
+            <view class="label">件数：</view>
+            <input type="number" placeholder-style='text-align:right' bindinput='getCount'></input>
+          </view>
+          <view class="col-tab">
+            <view class="label">运输类型:</view>
+            <picker bindchange="bindPickerChangeTwo" value="{{indexTwo}}" range="{{transportType}}" range-key="label" class="picked">
+              <view class="picker">
+                {{transportType[indexTwo].label}}
+                <icon class="iconfont icon-right"></icon>
+              </view>
+            </picker>
+          </view>
+        </view>
+        <view class="bigBox serviceInfo">
+          <view class="col-tab">
+            <view class="label">提货日期:</view>
+            <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+              <view class="picker">
+                {{date}}
+                <icon class="iconfont icon-right"></icon>
+              </view>
+            </picker>
+          </view>
+          <view class="col-tab">
+            <view class="label">签收单:</view>
+            <picker bindchange="bindPickerChangeSign" value="{{indexSign}}" range="{{signatureType}}" range-key="label" class="picked">
+              <view class="picker">
+                {{signatureType[indexSign].label}}
+                <icon class="iconfont icon-right"></icon>
+              </view>
+            </picker>
+          </view>
+          <view class="col-tab">
+            <view class="label">预计送达时间:</view>
+            <picker bindchange="bindPickerChangeReceive" value="{{indexReceive}}" range="{{receivingTime}}" range-key="label" class="picked">
+              <view class="picker">
+                {{receivingTime[indexReceive].label}}
+                <icon class="iconfont icon-right"></icon>
+              </view>
+            </picker>
+          </view>
+        </view>
+        <view class="bigBox">
+          <view>备注：</view>
+          <textarea bindblur="bindTextAreaBlur" maxlength="150" />
+        </view>
+        <view class="bigBox">
+          <button class="submit" bindtap='bindSubmit'>提交</button>
+        </view>
+      </form>
+    </view>
+  </view>
+  <address wx:else bind:getAddress="handleGetAddress" getId="{{getId}}" name="{{name}}" phone="{{phone}}" addressDetail="{{addressDetail}}" address="{{address}}" />
+</view>

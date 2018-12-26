@@ -1,34 +1,128 @@
-/* pages/bidding/bidding.wxss */
-.movie-container{
-  display: flex;
-  flex-direction: column;
-}
-.navbar{
-  display: flex;
-  position: absolute;
-  left: 0;
-  top: 72px;
-  z-index: 500;
-  width: 100%;
-  height: 50px;
-  flex-direction: row;
-  text-align: center;
-  color: #A8A8A8;
-  font-size: 15px;
-  box-sizing: border-box;
-  background-color: #FFF;
-}
-.navbar-item{
-  flex: 1;
-  padding: 26rpx 0px;
-  margin: 0 80rpx;
-}
-.navbar-item-active{
-  /* transition: all 0.3s; */
-  border-bottom: 5rpx solid #2a7dfd;
-  color: #2a7dfd;
+.content .weui-navbar {
+  background-color: #3283f8;
+  border: 0;
 }
 
-.movie-content-wrapper{
-  padding-top: 50px;
+.content .weui-navbar__title {
+  color: #ddd;
+}
+
+.content .weui-navbar__item.weui-bar__item_on .weui-navbar__title {
+  color: #fff;
+}
+
+.weui-navbar__slider {
+  width: 60rpx;
+  background-color: #fff;
+  left: 155rpx;
+  height: 2px;
+}
+
+.weui-search-bar {
+  border-bottom: 0;
+  background-color: #f4f4f4;
+}
+
+.weui-search-bar__input {
+  font-size: 12px;
+}
+
+.weui-search-bar {
+  padding: 8px 5px;
+}
+
+.weui-search-bar__box {
+  padding: 5px 30px;
+}
+
+.weui-icon-search_in-box {
+  top: 12px;
+}
+
+.list {
+  background-color: #f4f4f4;
+}
+
+.weui-form-preview {
+  margin: 0 5px;
+  margin-bottom: 8px;
+  border: 0;
+}
+
+.weui-form-preview::before {
+  border: 0;
+}
+
+.weui-form-preview__hd {
+  position: static;
+  line-height: 1.5em;
+  padding: 10px 0;
+  margin: 0 15px;
+  border-bottom: 1px dashed #ccc;
+  font-size: 12px;
+}
+
+.weui-form-preview__hd .weui-form-preview__label {
+  color: #000;
+  font-weight: bold;
+}
+
+.weui-form-preview__item {
+  font-size: 12px;
+}
+
+.weui-form-preview__value {
+  font-size: 12px;
+  color: #000;
+}
+
+.weui-form-preview__btn_primary {
+  color: #3283f8;
+  font-size: 12px;
+  border: 1px solid #3283f8;
+  background-color: #fff;
+  width: 40px;
+}
+
+.btn {
+  text-align: right;
+  height: 40px;
+  line-height: 40px;
+}
+
+.weui-btn.biddingbtn {
+  margin: 0 10px;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 0 15px;
+  border: 1px solid #3283f8;
+  color: #3283f8;
+  line-height: 20px;
+  font-size: 12px;
+}
+
+.detail {
+  padding: 8px;
+}
+
+.final {
+  padding-right: 0;
+}
+
+.price {
+  text-align: right;
+  font-size: 12px;
+  color: #000;
+  padding: 6px 0;
+  margin: 0 15px;
+  border-top: 1px solid #eee;
+}
+
+.redColor {
+  color: rgb(245, 108, 108);
+}
+
+.val {
+  font-size: 16px;
 }

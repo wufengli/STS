@@ -1,14 +1,11 @@
 <!--index.wxml-->
 <view class="container">
-  <headerbar tips="九州通物流"/>
   <view class="content">
     <image class="index" mode="widthFix" src="/images/index1.png"></image>
   </view>
   <view class="leader">
     <image class="index" mode="widthFix" src="/images/index2.png"></image>
-    <view class='bidding' bindtap='handleToBidding'></view>
-  </view>
-  <view class="bottom">
-    <image class="index" mode="widthFix" src="/images/index3.png"></image>
+    <navigator class='order' url="/pages/order/order"></navigator>
+    <navigator class='bidding' url="/pages/bidding/bidding"></navigator>
   </view>
 </view>

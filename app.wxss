@@ -1,18 +1,14 @@
 @import "/icon.wxss";
+@import "weui.wxss";
 .iconfont {
   font-family: "iconfont";
   font-size: 60rpx;
 }
 .icon-search:before { content: "\e65c"; }
-
 .icon-right:before { content: "\e6a3"; }
-
 .icon-refund:before { content: "\e6ac"; }
-
 .icon-remind:before { content: "\e6b2"; }
-
 .icon-link:before { content: "\e6bf"; }
-
 .icon-home_light:before { content: "\e7d4"; }
-
 .icon-my_light:before { content: "\e7d5"; }
+.icon-back:before { content: "\e679"; }

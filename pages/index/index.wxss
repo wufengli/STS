@@ -1,14 +1,13 @@
 /**index.wxss**/
-.content {
-  margin-top: 72px;
-}
+
 .index {
   width: 100%;
 }
+
 .leader {
-  margin-bottom: 124rpx; 
   position: relative;
 }
+
 .bidding {
   position: absolute;
   top: 19rpx;
@@ -17,8 +16,12 @@
   right: 10.3rpx;
   background-color: rgba(0, 0, 0, 0);
 }
-.bottom {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
+
+.order {
+  position: absolute;
+  top: 19rpx;
+  height: 173rpx;
+  width: 47.4%;
+  left: 10.3rpx;
+  background-color: rgba(0, 0, 0, 0);
 }

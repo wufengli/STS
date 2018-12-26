@@ -1,0 +1,48 @@
+.list {
+  background-color: #f4f4f4;
+}
+
+.weui-form-preview {
+  margin: 0 5px;
+  margin-bottom: 8px;
+  border: 0;
+}
+
+.weui-form-preview::before {
+  border: 0;
+}
+
+.weui-form-preview__hd {
+  position: static;
+  line-height: 1.5em;
+  padding: 10px 0;
+  margin: 0 15px;
+  border-bottom: 1px dashed #ccc;
+  font-size: 12px;
+}
+
+.weui-form-preview__hd .weui-form-preview__label {
+  color: #000;
+  font-weight: bold;
+}
+
+.weui-form-preview__item {
+  font-size: 12px;
+}
+
+.weui-form-preview__value {
+  font-size: 12px;
+  color: #000;
+}
+
+.weui-form-preview__btn_primary {
+  color: #3283f8;
+  font-size: 12px;
+  border: 1px solid #3283f8;
+  background-color: #fff;
+  width: 40px;
+}
+
+.detail {
+  padding: 8px;
+}

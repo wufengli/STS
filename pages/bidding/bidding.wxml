@@ -1,23 +1,163 @@
-<!--pages/bidding/bidding.wxml-->
-<headerbar tips="竞价任务"/>
-<view class="movie-container">
-  <!-- 导航栏 -->
-  <view class="navbar">
-    <block wx:for="{{navbarTitle}}" wx:key="index">
-      <view class="navbar-item {{navbarActiveIndex === index ? 'navbar-item-active' : ''}}" data-navbar-index="{{index}}" catchtap="onNavBarTap">
-        <icon class="iconfont icon-remind"></icon>
-        <text>{{item}}</text>
+<view class="page">
+  <!-- 内容 -->
+  <view class="page__bd">
+    <!-- tab -->
+    <view class="weui-tab content">
+      <!-- tab头 -->
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);">
+        </view>
       </view>
-    </block>
-  </view>
-  <view class="movie-content-wrapper">
-    <swiper current="{{navbarActiveIndex}}" bindanimationfinish="onBindAnimationFinish">
-      <swiper-item wx:for="{{navbarTitle}}" wx:key="index">
-        <scroll-view scroll-y="{{true}}">
-          {{item}}
-        </scroll-view>
-      </swiper-item>
-    </swiper>
+      <!-- tab 内容 -->
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <!-- 搜索框 -->
+          <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+              <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input" placeholder="请输入任务单起始地/目的地" value="{{wxSearchData.value}}" bindfocus="wxSerchFocus" bindinput="wxSearchInput" bindblur="wxSearchBlur" />
+                <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                  <icon type="clear" size="14"></icon>
+                </view>
+              </view>
+            </view>
+          </view>
+          <!-- list -->
+          <view class='list'>
+            <view class="weui-form-preview" wx:for="{{biddinglist}}" wx:key="index">
+              <view class="weui-form-preview__hd">
+                <navigator class="weui-form-preview__item" url="/pages/detail/detail?id={{item.bidTaskNum}}">
+                  <view class="weui-form-preview__label">任务单号：{{item.bidTaskNum}}</view>
+                  <view class="weui-form-preview__value">
+                    <icon class="weui-cell__ft weui-cell__ft_in-access"></icon>
+                  </view>
+                </navigator>
+              </view>
+              <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">起始地：</view>
+                  <view class="weui-form-preview__value">{{item.pickArea}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">目的地：</view>
+                  <view class="weui-form-preview__value">{{item.deliverArea}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">任务单发布时间：</view>
+                  <view class="weui-form-preview__value">{{item.releaseTime}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">类型：</view>
+                  <view class="weui-form-preview__value">{{item.taskType}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">时效：</view>
+                  <view class="weui-form-preview__value">{{item.serviceTime}}h</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">详情：</view>
+                  <view class="weui-form-preview__value">
+                    <text class='detail'>件数：{{item.totalQuantity}}</text>|
+                    <text class='detail'>重量：{{item.totalWeight}}kg</text>|
+                    <text class='detail final'> 体积：{{item.totalVolume}}m³</text>
+                  </view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">竞拍参考价：</view>
+                  <view class="weui-form-preview__value">{{item.proposedPrice}}元</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">剩余竞价时间：</view>
+                  <view class="weui-form-preview__value">{{item.sealedDiskTime.hou}}：{{item.sealedDiskTime.min}}：{{item.sealedDiskTime.sec}}</view>
+                </view>
+              </view>
+              <view class='btn'>
+                <button class="weui-btn mini-btn biddingbtn" type="default" size="mini" bindtap="bidding" id="{{item.bidTaskNum}}">竞价</button>
+              </view>
+              <!-- 模态框 -->
+              <modal id="modal" hidden="{{hiddenmodalput}}" title="参与竞拍" confirm-text="竞拍" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+                <input type='number' name="quotedPrice" value='{{quotedPrice}}' bindinput="priceInput" placeholder="{{placeholder}}" cursor-spacing='100' />
+              </modal>
+            </view>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <!-- 搜索框 -->
+          <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+              <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input" placeholder="请输入任务单起始地/目的地" value="{{wxSearchData.value}}" bindfocus="wxSerchFocus" bindinput="wxSearchInput" bindblur="wxSearchBlur" />
+                <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                  <icon type="clear" size="14"></icon>
+                </view>
+              </view>
+            </view>
+          </view>
+          <!-- list -->
+          <view class='list'>
+            <view class="weui-form-preview" wx:for="{{biddedlist}}" wx:key="index">
+              <view class="weui-form-preview__hd">
+                <navigator class="weui-form-preview__item" url="/pages/detail/detail?id={{item.bidTaskNum}}">
+                  <view class="weui-form-preview__label">任务单号：{{item.bidTaskNum}}</view>
+                  <view class="weui-form-preview__value">
+                    <icon class="weui-cell__ft weui-cell__ft_in-access"></icon>
+                  </view>
+                </navigator>
+              </view>
+              <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">起始地：</view>
+                  <view class="weui-form-preview__value">{{item.pickArea}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">目的地：</view>
+                  <view class="weui-form-preview__value">{{item.deliverArea}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">任务单发布时间：</view>
+                  <view class="weui-form-preview__value">{{item.releaseTime}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">类型：</view>
+                  <view class="weui-form-preview__value">{{item.taskType}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">时效：</view>
+                  <view class="weui-form-preview__value">{{item.serviceTime}}h</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">详情：</view>
+                  <view class="weui-form-preview__value">
+                    <text class='detail'>件数：{{item.totalQuantity}}</text>|
+                    <text class='detail'>重量：{{item.totalWeight}}kg</text>|
+                    <text class='detail final'> 体积：{{item.totalVolume}}m³</text>
+                  </view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">竞拍参考价：</view>
+                  <view class="weui-form-preview__value">{{item.proposedPrice}}元</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">剩余竞价时间：</view>
+                  <view class="weui-form-preview__value">{{item.sealedDiskTime.hou}}：{{item.sealedDiskTime.min}}：{{item.sealedDiskTime.sec}}</view>
+                </view>
+              </view>
+              <view class="price">
+                <text>拍价：</text>
+                <text class="redColor">￥</text>
+                <text class="redColor val">{{item.proposedPrice}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
 </view>
-<view>111</view>

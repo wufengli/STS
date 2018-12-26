@@ -1,9 +1,26 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/bidding/bidding"
+    "pages/bidding/bidding",
+    "pages/detail/detail",
+    "pages/order/order"
   ],
   "window": {
-    "navigationStyle": "custom"
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#361377",
+    "navigationBarTitleText": "九州通物流",
+    "navigationBarTextStyle": "#fff"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的"
+      }
+    ]
   }
 }
