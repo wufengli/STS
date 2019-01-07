@@ -15,19 +15,19 @@
       </view>
       <!-- tab 内容 -->
       <view class="weui-tab__panel">
-        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-          <!-- 搜索框 -->
-          <view class="weui-search-bar">
-            <view class="weui-search-bar__form">
-              <view class="weui-search-bar__box">
-                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-                <input type="text" class="weui-search-bar__input" placeholder="请输入任务单起始地/目的地" value="{{wxSearchData.value}}" bindfocus="wxSerchFocus" bindinput="wxSearchInput" bindblur="wxSearchBlur" />
-                <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
-                  <icon type="clear" size="14"></icon>
-                </view>
+        <!-- 搜索框 -->
+        <view class="weui-search-bar">
+          <view class="weui-search-bar__form">
+            <view class="weui-search-bar__box">
+              <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+              <input type="text" class="weui-search-bar__input" placeholder="请输入任务单起始地/目的地" value="{{pick}}" bindfocus="serchFocus" bindinput="searchInput" bindblur="searchBlur" />
+              <view class="weui-icon-clear" wx:if="{{pick.length > 0}}" bindtap="clearInput">
+                <icon type="clear" size="14"></icon>
               </view>
             </view>
           </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
           <!-- list -->
           <view class='list'>
             <view class="weui-form-preview" wx:for="{{biddinglist}}" wx:key="index">
@@ -78,7 +78,7 @@
                 </view>
               </view>
               <view class='btn'>
-                <button class="weui-btn mini-btn biddingbtn" type="default" size="mini" bindtap="bidding" id="{{item.bidTaskNum}}">竞价</button>
+                <button class="weui-btn mini-btn biddingbtn" type="default" size="mini" bindtap="bidding" id="{{item.bidTaskId}}">竞价</button>
               </view>
               <!-- 模态框 -->
               <modal id="modal" hidden="{{hiddenmodalput}}" title="参与竞拍" confirm-text="竞拍" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
@@ -88,18 +88,6 @@
           </view>
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
-          <!-- 搜索框 -->
-          <view class="weui-search-bar">
-            <view class="weui-search-bar__form">
-              <view class="weui-search-bar__box">
-                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-                <input type="text" class="weui-search-bar__input" placeholder="请输入任务单起始地/目的地" value="{{wxSearchData.value}}" bindfocus="wxSerchFocus" bindinput="wxSearchInput" bindblur="wxSearchBlur" />
-                <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
-                  <icon type="clear" size="14"></icon>
-                </view>
-              </view>
-            </view>
-          </view>
           <!-- list -->
           <view class='list'>
             <view class="weui-form-preview" wx:for="{{biddedlist}}" wx:key="index">
@@ -152,7 +140,7 @@
               <view class="price">
                 <text>拍价：</text>
                 <text class="redColor">￥</text>
-                <text class="redColor val">{{item.proposedPrice}}</text>
+                <text class="redColor val">{{item.quotedPrice}}</text>
               </view>
             </view>
           </view>

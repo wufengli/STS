@@ -39,6 +39,10 @@
   top: 12px;
 }
 
+.weui-icon-clear {
+  top: 6px;
+}
+
 .list {
   background-color: #f4f4f4;
 }

@@ -9,7 +9,9 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#361377",
     "navigationBarTitleText": "九州通物流",
-    "navigationBarTextStyle": "#fff"
+    "navigationBarTextStyle": "#fff",
+    "enablePullDownRefresh": false,
+    "backgroundColor": "#3283f8"
   },
   "tabBar": {
     "list": [
